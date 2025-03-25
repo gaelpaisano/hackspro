@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HacksPro</title>
+    <link rel="icon" href="https://img.icons8.com/?size=100&id=sHqs4IhgXeYc&format=png&color=000000">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #2d53ff, #1d59ff);
+            color: white;
+        }
+        h2 {
+            font-size: 5vw;
+            margin-bottom: 20px;
+        }
+        #botones {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 4vw; 
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease-in-out;
+        }
+        button:active {
+            transform: scale(0.9);
+        }
+        button:hover {
+            transform: scale(1.1); 
+        }
+        .si {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .no {
+            background-color: #e74c3c;
+            color: white;
+        }
+
+        @media (max-width: 600px) { 
+            h2 {
+                font-size: 6vw;
+            }
+            button {
+                font-size: 5vw;
+                padding: 12px 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h2 id="pregunta">¿Tienes novio(a)?</h2>
+    <div id="botones">
+        <button class="si" onclick="responder('si')">Sí</button>
+        <button class="no" onclick="responder('no')">No</button>
+    </div>
+    <audio id="audioSi" src="tilin.mp3"></audio>
+    <audio id="audioNo" src="chiste.mp3"></audio>
+    <script>
+        function responder(respuesta) {
+            document.getElementById("pregunta").style.display = "none";
+            document.getElementById("botones").style.display = "none";
+            document.body.style.background = "#000000";
+
+            let audio = respuesta === "si" ? document.getElementById("audioSi") : document.getElementById("audioNo");
+            audio.play();  
+        }
+    </script>
+</body>
+</html>
